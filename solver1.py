@@ -1,4 +1,4 @@
-#blank file for solver code
+# May 22, 2020: Jeremiah & Nisha
 
 # NOTE: The first version will just work on filling in the words as best it can based on the placement order. The second
 # version should look to optimize the placement of words so that other wrods can be made. Maybe by filling in the larger
