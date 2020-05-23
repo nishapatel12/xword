@@ -19,6 +19,24 @@ import random
 # 2. Answers and clues
 # 3. Answer positions
 
+# Create a grid filled with "?"
+def createGrid(grid_size):
+  grid = []
+  for row in range(grid_size):
+    grid.append([])
+    for column in range(grid_size):
+      grid[row].append("?") # Adds blank space
+  return grid
+
+
+# Print the grid to the screen
+def showGrid(grid):
+  for row in range(len(grid)):
+    for column in range(len(grid[row])):
+      print(grid[row][column], end = "")
+    print()
+
+
 def wordFinder(slots):
   slot_num = -1
   answers = [idx for idx in master_dict.keys() if len(idx) == len(slots)] # Selects words that are the right length
@@ -81,24 +99,6 @@ def fillGrid(grid, grid_size):
   return grid
 
 
-# Create a grid filled with "?"
-def createGrid(grid_size):
-  grid = []
-  for row in range(grid_size):
-    grid.append([])
-    for column in range(grid_size):
-      grid[row].append("?") # Adds blank space
-  return grid
-
-
-# Print the grid to the screen
-def showGrid(grid):
-  for row in range(len(grid)):
-    for column in range(len(grid[row])):
-      print(grid[row][column], end = "")
-    print()
-
-
 def findColumn(grid,grid_size,column):
   col = []
   for row in range(grid_size):
@@ -112,7 +112,13 @@ dict_file = 'eng_words.txt'
 master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
 
 # Import the filled in squares
-puzzle = open("test_puzzle.txt", "r")
+puzzle_file = 'test_puzzle.txt'
+puzzle = open(puzzle_file, "r")
+with open(puzzle_file, 'r') as p_file:
+  Puz = p_file.readlines()
+
+print(Puz)
+
 grid_size = 5  # This stuff is just stand-in for the user-generated board.
 grid = createGrid(grid_size)
 grid[0][:] = "ALAMO"
