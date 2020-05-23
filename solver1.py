@@ -10,31 +10,14 @@
 
 import random
 
-## Import the chosen dictionary of words to fill in
-dict_file = 'eng_words.txt'
+# INPUTS:
+# 1. Players answers and clues
+# 2. Current Game Board State
 
-## Import the filled in squares
-  # Also needs to import the clues
-puzzle = open("test_puzzle.txt", "r")
-
-answers = [] # Words that can be added to fill in the puzzle
-master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
-
-with open(dict_file, "r") as a_file:
-  for line in a_file:
-    stripped_line = line.strip()
-    (answer, clue) = stripped_line.split(maxsplit=1)
-    #FIX: I think the dict needs to be switched so that the clue is the 'key', therefore ans can have 2+ clues
-    master_dict[answer] = clue # Files the string into the master dictionary
-
-answers = master_dict.keys() # Takes the answers from the dictionary
-
-## Get the user-fill in Board
-
-## Fill in the rest of the missing spaces
-  # Choose the first word
-  # Find a word that fits (right letter, right length)
-  # Place word
+# OUTPUTS:
+# 1. Current Game Board State
+# 2. Answers and clues
+# 3. Answer positions
 
 def wordFinder(slots):
   slot_num = -1
@@ -98,13 +81,13 @@ def fillGrid(grid, grid_size):
   return grid
 
 
-# Create a grid filled with "?" representing a blank
+# Create a grid filled with "?"
 def createGrid(grid_size):
   grid = []
   for row in range(grid_size):
     grid.append([])
     for column in range(grid_size):
-      grid[row].append("?")
+      grid[row].append("?") # Adds blank space
   return grid
 
 
@@ -122,22 +105,35 @@ def findColumn(grid,grid_size,column):
     col.append(grid[row][column])
   return col
 
+#############
 
+# Import the chosen dictionary of words to fill in
+dict_file = 'eng_words.txt'
+master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
 
-# The control starts here
-
-grid_size = 5
+# Import the filled in squares
+puzzle = open("test_puzzle.txt", "r")
+grid_size = 5  # This stuff is just stand-in for the user-generated board.
 grid = createGrid(grid_size)
-#showGrid(grid)
 grid[0][:] = "ALAMO"
 grid[1][3] = "!"
 grid[2][2] = "!"
 grid[3][3] = "!"
 grid[4][1] = "!"
-showGrid(grid)
-print("#######")
 
-wordFinder("a???t")
+with open(dict_file, "r") as a_file: # Opens file with answers/clues
+  for line in a_file:
+    stripped_line = line.strip()
+    (answer, clue) = stripped_line.split(maxsplit=1)
+    #FIX: Something needs to be changed so that there can be 2+ clues for the same answer
+    master_dict[answer] = clue  # Files the string into the master dictionary
+
+## Fill in the rest of the missing spaces
+  # Choose the first word
+  # Find a word that fits (right letter, right length)
+  # Place word
+
+
 #fillGrid(grid, grid_size)
 
 ## Find the clues for the corresponding answers
@@ -145,3 +141,6 @@ wordFinder("a???t")
 ## Clear unused clues
 
 ## Save file
+
+showGrid(grid)
+wordFinder("a???t")
