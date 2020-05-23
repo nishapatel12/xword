@@ -20,6 +20,7 @@ import random
 # 3. Answer positions
 
 # Create a grid filled with "?"
+#FIX:Can honestly probably remove this function as the puzzle file will be coming in from somewhere else.
 def createGrid(grid_size):
   grid = []
   for row in range(grid_size):
@@ -111,22 +112,14 @@ def findColumn(grid,grid_size,column):
 dict_file = 'eng_words.txt'
 master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
 
-# Import the filled in squares
-puzzle_file = 'test_puzzle.txt'
+# Imports the puzzle text file
+puzzle_file = 'alamo_puzzle.txt'
 puzzle = open(puzzle_file, "r")
 with open(puzzle_file, 'r') as p_file:
-  Puz = p_file.readlines()
+  Puz = [line.strip() for line in p_file]  # Takes each line from text file
 
-print(Puz)
 
-grid_size = 5  # This stuff is just stand-in for the user-generated board.
-grid = createGrid(grid_size)
-grid[0][:] = "ALAMO"
-grid[1][3] = "!"
-grid[2][2] = "!"
-grid[3][3] = "!"
-grid[4][1] = "!"
-
+grid_size = len(Puz[0])  # Finds the length of the grid
 with open(dict_file, "r") as a_file: # Opens file with answers/clues
   for line in a_file:
     stripped_line = line.strip()
@@ -148,5 +141,5 @@ with open(dict_file, "r") as a_file: # Opens file with answers/clues
 
 ## Save file
 
-showGrid(grid)
+
 wordFinder("a???t")
