@@ -4,9 +4,13 @@
 # version should look to optimize the placement of words so that other wrods can be made. Maybe by filling in the larger
 # words first and then filling in smaller ones. Would also be good to allow user to block off certain squares.
 
-# 5/19 -- Need to figure out a way of locating where a words starts, and its direction. Ideally some kind of vector so
-# that [3 0 5 1] = 4th row, first column, 5 characters, vertical. Then there needs to be a score of how long the word is
-# and if its already been filled in already. Much to do, but getting closer!!
+# 5/19 -- Need to figure out a way of locating where a words starts, and its direction. Ideally some kind of vector
+# (currently called 'master_slots' that [3 0 5 1] = 4th row, first column, 5 characters, vertical. Then there needs to
+# be a score of how long the word is and if its already been filled in already. Much to do, but getting closer!!
+
+# 5/22 -- Still need to figure out how to store/determine slots space is the longest, as it should be filled first.
+# From there we will need to create the function that places the word in the grid (dependent on orientation). After that
+# there shouldn't be too much more on the backend side for now.
 
 import random
 
@@ -70,7 +74,6 @@ def fillGrid(grid, grid_size):
 
   for column in range(grid_size):
     colm = findColumn(grid,grid_size,column)
-    print("Slots in column:", colm)
     coi = ''.join(colm)
     if coi.isalpha(): # Check if the row is all filled; if so, pass
       continue
@@ -84,20 +87,24 @@ def fillGrid(grid, grid_size):
 
   print(max_len)
 
-  # select the longest row/column
-  # get the current slots
-  # find words that fit
-  slots = "?w???"
-  words = wordFinder(slots)
-  word = words[0] #FIX: make this so it randomly chooses one of the possible words
-    # choose and place a word
-      #if row
-      # if column
-  # update grid
-  #iterate until full
+  final_answers = [] # Will contain answers so clues can be found later
+  # Create for loop to go through all slots. Need some kind of data structure to hold values
+  for slot in master_slots: #FIX: Need to create a file that has all the slots
+    slots = "?w???"  #FIX: This is just to test. Make sure to remove
+    words = wordFinder(slots)
+    word = random.choice(words)  # Randomly chooses one of the words. Maybe could be optimized to choose the one with most vowels?
+    final_answers.append(word)
+        #if row
+        # if column
+    # update grid
+    placeGrid(grid, word, pos)
+    #iterate until full
+
   print("Grid is filled")
-  print(grid)
-  return grid
+  return grid, final_answers
+
+def placeGrid(grid,word,pos):
+  # Takes a word and places it in the given position in the grid
 
 
 def findColumn(grid,grid_size,column):
@@ -113,13 +120,13 @@ dict_file = 'eng_words.txt'
 master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
 
 # Imports the puzzle text file
-puzzle_file = 'alamo_puzzle.txt'
+puzzle_file = 'large_test_puzzle.txt'
 puzzle = open(puzzle_file, "r")
 with open(puzzle_file, 'r') as p_file:
   puzzle_grid = [line.strip() for line in p_file]  # Takes each line from text file
 
 
-grid_size = len(Puz[0])  # Finds the length of the grid
+grid_size = len(puzzle_grid[0])  # Finds the length of the grid
 with open(dict_file, "r") as a_file: # Opens file with answers/clues
   for line in a_file:
     stripped_line = line.strip()
@@ -128,13 +135,7 @@ with open(dict_file, "r") as a_file: # Opens file with answers/clues
     master_dict[answer] = clue  # Files the string into the master dictionary
 
 ## Fill in the rest of the missing spaces
-fillGrid(grid, grid_size)
-  # Choose the first word
-  # Find a word that fits (right letter, right length)
-  # Place word
-
-
-#fillGrid(grid, grid_size)
+fillGrid(puzzle_grid, grid_size)
 
 ## Find the clues for the corresponding answers
 
