@@ -116,7 +116,7 @@ master_dict = {} # Dictionary to contain answers and their clues !!Could there b
 puzzle_file = 'alamo_puzzle.txt'
 puzzle = open(puzzle_file, "r")
 with open(puzzle_file, 'r') as p_file:
-  Puz = [line.strip() for line in p_file]  # Takes each line from text file
+  puzzle_grid = [line.strip() for line in p_file]  # Takes each line from text file
 
 
 grid_size = len(Puz[0])  # Finds the length of the grid
@@ -128,6 +128,7 @@ with open(dict_file, "r") as a_file: # Opens file with answers/clues
     master_dict[answer] = clue  # Files the string into the master dictionary
 
 ## Fill in the rest of the missing spaces
+fillGrid(grid, grid_size)
   # Choose the first word
   # Find a word that fits (right letter, right length)
   # Place word
@@ -139,7 +140,9 @@ with open(dict_file, "r") as a_file: # Opens file with answers/clues
 
 ## Clear unused clues
 
-## Save file
-
+# Save/Export puzzle
+with open(puzzle_file, 'w') as puzzle_final:
+  for row in puzzle_grid:
+    puzzle_final.write("%s\n" % row)
 
 wordFinder("a???t")
