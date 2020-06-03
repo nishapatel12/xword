@@ -5,12 +5,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+table, th, td {
+  border: 3px solid black;
+  border-spacing: 3px;
+  border-collapse: collapse;
+  text-align: center;
+  height: 100px;
+  width: 400px;
 }
 
 /* Style the header */
@@ -26,7 +36,7 @@ header {
 nav {
   float: left;
   width: 10%;
-  height: 300px; /* only for demonstration, should be removed */
+  height: 600px;
   background: #ccc;
   padding: 20px;
 }
@@ -36,15 +46,18 @@ article {
   padding: 20px;
   width: 60%;
   background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
+  height: 600px;
 }
 
 rnav {
   float: right;
   padding: 20px;
   width: 30%;
-  background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
+  line-height: normal;
+  white-space: pre;
+  background-color: #000000;
+  color: white;
+  height: 600px;
 }
 
 /* Clear floats after the columns */
@@ -75,28 +88,53 @@ footer {
 <body>
 
 <header>
-  <h2>XWord: Fill in Your Puzzle</h2>
+  <h2 style="font-size:300%;">XWord</h2>
+    <h3> Fill in Your Puzzle</h3>
 </header>
 
 <section>
   <nav>
-      <p> Navigation Bar</p>
+      <h3> Navigation Bar</h3>
+      <p> Use "Update Puzzle" to see the changes you've made. </p><br>
+      <p> Use "Solve Puzzle" to fill in any blank spaces still on the board. </p><br>
       <input type="button" onclick="location.href='create.html'" value="New Puzzle">
   </nav>
 
   <article>
-    <p> Here's your puzzle! </p>
-    <h id="puzzle_title">Puzzle Title</h>
+    <h2 id="puzzle_title">Puzzle Title</h2><br>
     <!-- Probably put some kind of JS here to update the puzzle -->
     <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
-    <embed src="large_test_puzzle.txt"><br>
+    <!-- <embed src="large_test_puzzle.txt"><br> -->
+    <table>
+      <tr height = "30%" width= "30%">
+        <td>A</td>
+        <td>N</td>
+        <td>T</td>
+      </tr>
+      <tr>
+        <td>?</td>
+        <td>?</td>
+        <td style="height:30px">?</td>
+      </tr>
+      <tr>
+        <td>?</td>
+        <td>?</td>
+        <td>!</td>
+      </tr>
+    </table>
   </article>
+
+  <rnav>
+      <h3> Across</h3><br>
+      <p> 1. Word
+      2. Word</p><br>
+      <h3> Down</h3><br>
+      <p> 1. Word
+          2. Word</p><br>
+      <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update Puzzle</button>
+      <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Solve Puzzle</button>
+  </rnav>
 </section>
-
-    <rnav>
-        <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update Puzzle</button>
-    </rnav>
-
 
 <footer>
   <p>Contact Us<br>v0.1</p>
