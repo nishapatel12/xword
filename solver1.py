@@ -106,6 +106,7 @@ def fillGrid(grid, grid_size):
 
 def placeGrid(grid,word,pos):
   # Takes a word and places it in the given position in the grid
+  print('Grid Placed')
 
 
 def findColumn(grid,grid_size,column):
@@ -113,6 +114,7 @@ def findColumn(grid,grid_size,column):
   for row in range(grid_size):
     col.append(grid[row][column])
   return col
+
 
 #############
 
