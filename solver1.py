@@ -103,6 +103,7 @@ def fillGrid(grid, grid_size):
   print("Grid is filled")
   return grid, final_answers
 
+
 def placeGrid(grid,word,pos):
   # Takes a word and places it in the given position in the grid
 
