@@ -5,12 +5,14 @@
     <title>Title</title>
 </head>
 <body>
+x = "test"
 
 <p> Here's your puzzle! </p>
-
+<h id="puzzle_title">Puzzle Title</h>
 <!-- Probably put some kind of JS here to update the puzzle -->
 <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
-<embed src="large_test_puzzle.txt">
+<embed src="large_test_puzzle.txt"><br>
+<button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update</button>
 
 </body>
 </html>
