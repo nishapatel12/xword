@@ -16,7 +16,7 @@ body {
 /* Style the header */
 header {
   background-color: #666;
-  padding: 30px;
+  padding: 5px;
   text-align: center;
   font-size: 35px;
   color: white;
@@ -25,16 +25,10 @@ header {
 /* Create two columns/boxes that floats next to each other */
 nav {
   float: left;
-  width: 30%;
+  width: 10%;
   height: 300px; /* only for demonstration, should be removed */
   background: #ccc;
   padding: 20px;
-}
-
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
 }
 
 article {
@@ -75,20 +69,28 @@ footer {
 <header>
   <h2>XWord</h2>
 </header>
-<h1> Welcome to the XWord Project</h1>
-<p> Created by Jeremiah Chikota and Nisha Patel <br>v0.1 </p>
 
-<!-- User inputs to create a puzzle -->
-<form action = "fill_puzzle.html">
-    <label for ="puzzle_name"> Puzzle Name:</label><br>
-    <input type = "text" id="puzzle_name" name="puzzle_name"><br>
-    <label for ="grid_size"> Grid Size:</label><br>
-    <input type = "text" id="grid_size" name="grid_size"><br>
-    <input type="submit" value="Create Puzzle">
-</form>
+<section>
+  <nav>
+      <h1> Welcome to the XWord Project</h1>
+      <p> Created by Jeremiah Chikota and Nisha Patel <br>v0.1 </p>
+  </nav>
+
+  <article>
+    <!-- User inputs to create a puzzle -->
+    <form action = "fill_puzzle.html">
+        <label for ="puzzle_name"> Puzzle Name:</label><br>
+        <input type = "text" id="puzzle_name" name="puzzle_name"><br>
+        <label for ="grid_size"> Grid Size:</label><br>
+        <input type = "text" id="grid_size" name="grid_size"><br>
+        <input type="submit" value="Create Puzzle">
+    </form>
+  </article>
+</section>
+
 
 <footer>
-  <p>Contact Us</p>
+  <p>Contact Us<br>v0.1</p>
 </footer>
 
 </body>

@@ -1,18 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-x = "test"
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<p> Here's your puzzle! </p>
-<h id="puzzle_title">Puzzle Title</h>
-<!-- Probably put some kind of JS here to update the puzzle -->
-<!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
-<embed src="large_test_puzzle.txt"><br>
-<button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update</button>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 5px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 10%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 60%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+rnav {
+  float: right;
+  padding: 20px;
+  width: 30%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article, rnav {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>XWord: Fill in Your Puzzle</h2>
+</header>
+
+<section>
+  <nav>
+      <p> Navigation Bar</p>
+      <input type="button" onclick="location.href='create.html'" value="New Puzzle">
+  </nav>
+
+  <article>
+    <p> Here's your puzzle! </p>
+    <h id="puzzle_title">Puzzle Title</h>
+    <!-- Probably put some kind of JS here to update the puzzle -->
+    <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
+    <embed src="large_test_puzzle.txt"><br>
+  </article>
+</section>
+
+    <rnav>
+        <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update Puzzle</button>
+    </rnav>
+
+
+<footer>
+  <p>Contact Us<br>v0.1</p>
+</footer>
 
 </body>
 </html>
