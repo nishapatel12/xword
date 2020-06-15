@@ -20,7 +20,28 @@ table, th, td {
   border-collapse: collapse;
   text-align: center;
   height: 100px;
-  width: 400px;
+  width: 100%;
+}
+
+/* Top Navigation Bar Styling
+.topnav {
+  overflow: hidden;
+  background-color: #03fca9;
+  width: 100%; /* Full Width */
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #02d991;
+  color: black;
 }
 
 /* Style the header */
@@ -28,34 +49,26 @@ header {
   background-color: #666;
   padding: 5px;
   text-align: center;
-  font-size: 35px;
+  font-size: 25px;
   color: white;
 }
 
 /* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 10%;
-  height: 600px;
-  background: #ccc;
-  padding: 20px;
-}
-
 article {
   float: left;
   padding: 20px;
-  width: 60%;
+  width: 66%;
   background-color: #f1f1f1;
   height: 600px;
 }
 
-rnav {
+sidebar {
   float: right;
   padding: 20px;
-  width: 30%;
+  width: 33%;
   line-height: normal;
   white-space: pre;
-  background-color: #000000;
+  background-color: #87009c;
   color: white;
   height: 600px;
 }
@@ -88,18 +101,17 @@ footer {
 <body>
 
 <header>
-  <h2 style="font-size:300%;">XWord</h2>
-    <h3> Fill in Your Puzzle</h3>
+  <h2 style="font-size:300%; text-align:center;">XWord</h2>
 </header>
 
-<section>
-  <nav>
-      <h3> Navigation Bar</h3>
-      <p> Use "Update Puzzle" to see the changes you've made. </p><br>
-      <p> Use "Solve Puzzle" to fill in any blank spaces still on the board. </p><br>
-      <input type="button" onclick="location.href='create.html'" value="New Puzzle">
-  </nav>
+<!-- Top Banner Section with action buttons -->
+<div class="topnav">
+  <a href="#clear">CLEAR</a>
+  <a href="#solve">SOLVE</a>
+  <a href="#print">PRINT</a>
+</div>
 
+<section>
   <article>
     <h2 id="puzzle_title">Puzzle Title</h2><br>
     <!-- Probably put some kind of JS here to update the puzzle -->
@@ -124,16 +136,14 @@ footer {
     </table>
   </article>
 
-  <rnav>
+  <sidebar>
       <h3> Across</h3><br>
       <p> 1. Word
       2. Word</p><br>
       <h3> Down</h3><br>
       <p> 1. Word
           2. Word</p><br>
-      <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Update Puzzle</button>
-      <button type="button" onclick='document.getElementById("puzzle_title").innerHTML = x'>Solve Puzzle</button>
-  </rnav>
+  </sidebar>
 </section>
 
 <footer>
