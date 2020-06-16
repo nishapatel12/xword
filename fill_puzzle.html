@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>CSS Template</title>
+<title>XWORD - Crossword Maker</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -11,8 +11,13 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
 }
 
 table, th, td {
@@ -22,6 +27,18 @@ table, th, td {
   text-align: center;
   height: 100px;
   width: 100%;
+}
+
+/* Style the header */
+header {
+  font-family: Arial;
+  background-color: #9b00b0;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+  letter-spacing: -10px;
+  font-style: italic;
+  margin-top: 0px;
 }
 
 /* Top Navigation Bar Styling */
@@ -38,7 +55,7 @@ table, th, td {
   background: #604b63;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 15px;
   width: 33.3333%; /* Three blocks of equal length */
   text-decoration: none;
   font-size: 30px;
@@ -46,15 +63,6 @@ table, th, td {
 
 .navbar a:hover {
   background: #9b00b0;
-  color: white;
-}
-
-/* Style the header */
-header {
-  background-color: #9b00b0;
-  padding: 5px;
-  text-align: center;
-  font-size: 25px;
   color: white;
 }
 
@@ -73,11 +81,12 @@ sidebar {
   padding: 5px;
   margin-top: 15px;
   width: 33%;
+  height: 800px;
   line-height: normal;
   white-space: pre;
   background-color: #604b63;
   color: white; /* Text Color */
-  height: 800px;
+  text-indent: 0px;
 }
 
 /* Clear floats after the columns */
@@ -109,7 +118,7 @@ footer {
 <body>
 
 <header>
-  <h2 style="font-size:300%; text-align:center;">XWord</h2>
+  <h2 style="text-align:center;">XWORD</h2>
 </header>
 
 <!-- Top Banner Section with action buttons -->
@@ -145,7 +154,7 @@ footer {
   </article>
 
   <sidebar>
-      <h3> Across</h3><br>
+      <h3> Across</h3>
       <p>
       1. Word
       2. Word
@@ -188,7 +197,7 @@ footer {
  </div>
 
 <footer>
-  <p>Contact Us<br>v0.1</p>
+  <p>Contact Us<br>v0.2</p>
 </footer>
 
 </body>
