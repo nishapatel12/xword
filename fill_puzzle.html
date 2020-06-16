@@ -24,24 +24,28 @@ table, th, td {
   width: 100%;
 }
 
-/* Top Navigation Bar Styling
-.topnav {
-  overflow: hidden;
-  background-color: #03fca9;
-  width: 100%; /* Full Width */
+/* Top Navigation Bar Styling */
+.navbar {
+  overflow: auto;
+  background-color: #333;
+  top: 0;
+  width: 100%;
 }
 
-.topnav a {
+.navbar a {
   float: left;
-  color: #ffffff;
+  display: block;
+  background: #604b63;
+  color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px;
+  width: 33.3333%; /* Three blocks of equal length */
   text-decoration: none;
-  font-size: 17px;
+  font-size: 30px;
 }
 
-.topnav a:hover {
-  background-color: #604b63;
+.navbar a:hover {
+  background: #9b00b0;
   color: white;
 }
 
@@ -58,6 +62,7 @@ header {
 article {
   float: left;
   padding: 20px;
+  margin-top: 15px;
   width: 66%;
   background-color: #f1f1f1;
   height: 800px;
@@ -65,7 +70,8 @@ article {
 
 sidebar {
   float: right;
-  padding: 20px;
+  padding: 5px;
+  margin-top: 15px;
   width: 33%;
   line-height: normal;
   white-space: pre;
@@ -85,6 +91,7 @@ section:after {
 footer {
   background-color: #9b00b0;
   padding: 10px;
+  margin-top: 15px;
   text-align: center;
   color: white;
 }
@@ -106,7 +113,7 @@ footer {
 </header>
 
 <!-- Top Banner Section with action buttons -->
-<div class="topnav">
+<div class="navbar">
   <a href="#clear">CLEAR</a>
   <a href="#solve">SOLVE</a>
   <a href="#print">PRINT</a>
@@ -114,7 +121,7 @@ footer {
 
 <section>
   <article>
-    <h2 id="puzzle_title">Puzzle Title</h2><br>
+    <h2 style="text-align:center;" id="puzzle_title">Puzzle Title</h2><br>
     <!-- Probably put some kind of JS here to update the puzzle -->
     <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
     <!-- <embed src="large_test_puzzle.txt"><br> -->
