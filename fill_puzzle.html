@@ -15,14 +15,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h2 {
+/* Affects the Site Title Sizing */
+h2, p {
   margin: 0;
   padding: 0;
 }
 
 td, tr {
   border: 5px solid black;
-  border-collapse: collapse;
+  padding: 0;
   width: 20%;
   height: 20%;
 }
@@ -30,6 +31,7 @@ td, tr {
 table {
   width: 700px;
   height: 700px;
+  margin: auto;
 }
 
 /* Style the header */
@@ -52,7 +54,7 @@ header {
   width: 100%;
 }
 
-.navbar a {
+.navbar button {
   float: left;
   display: block;
   background: #604b63;
@@ -64,7 +66,7 @@ header {
   font-size: 30px;
 }
 
-.navbar a:hover {
+.navbar button:hover {
   background: #9b00b0;
   color: white;
 }
@@ -81,23 +83,34 @@ article {
 
 sidebar {
   float: right;
-  padding: 5px;
+  padding: 0px;
   margin-top: 15px;
   width: 33%;
   height: 800px;
-  line-height: normal;
   white-space: pre;
   background-color: #604b63;
   color: white; /* Text Color */
   text-indent: 0px;
 }
 
-input {
+input[type=text] {
   width: 100%;
   height: 100%;
   font-size: 50px;
   text-align: center;
   text-transform: uppercase;
+}
+
+button {
+  background-color: #9b00b0;
+  border: none;
+  width: auto;
+  height: 90px;
+  margin: auto;
+}
+
+.buttons {
+    width: auto;
 }
 
 /* Clear floats after the columns */
@@ -134,14 +147,14 @@ footer {
 
 <!-- Top Banner Section with action buttons -->
 <div class="navbar">
-  <a href="#clear">CLEAR</a>
-  <a href="#solve">SOLVE</a>
-  <a href="#print">PRINT</a>
+  <button onclick="clearPuzzle()">CLEAR</button>
+  <button onclick="solvePuzzle()">SOLVE</button>
+  <button onclick="printScrn()">PRINT</button>
 </div>
 
 <section>
   <article>
-    <h2 style="text-align:center;" id="puzzle_title">Puzzle Title</h2><br>
+    <h2><input type="text" value = "Puzzle Title"></h2><br>
     <!-- Probably put some kind of JS here to update the puzzle -->
     <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
     <!-- <embed src="large_test_puzzle.txt"><br> -->
@@ -185,18 +198,23 @@ footer {
   </article>
 
   <sidebar>
-      <h3> Across</h3>
+      <h3>Across</h3>
       <p>
       1. Word
       2. Word
       3. Word
-      4. Word</p><br>
-      <h3> Down</h3><br>
+      4. Word</p>
+      <h3>Down</h3>
       <p>
       1. Word
       2. Word
       3. Word
-      4. Word</p><br>
+      4. Word</p>
+      <h3>Tools</h3>
+      <div class="buttons">
+         <button>Block</button>
+         <button>Erase</button>
+      </div>
   </sidebar>
 </section>
 
@@ -232,4 +250,18 @@ footer {
 </footer>
 
 </body>
+
+<script>
+    function printScrn(){
+        window.print();
+    }
+
+    function solvePuzzle(){
+
+    }
+
+    function clearPuzzle(){
+
+    }
+</script>
 </html>
