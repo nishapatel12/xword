@@ -24,14 +24,15 @@ h2, p {
 td, tr {
   border: 5px solid black;
   padding: 0;
-  width: 20%;
-  height: 20%;
+  width: auto;
+  height: auto;
 }
 
 table {
   width: 700px;
   height: 700px;
   margin: auto;
+  padding: 15px;
 }
 
 /* Style the header */
@@ -102,7 +103,7 @@ input[type=text] {
 }
 
 button {
-  background-color: #9b00b0;
+  background-color: #ffffff;
   border: none;
   width: auto;
   height: 90px;
@@ -147,9 +148,9 @@ footer {
 
 <!-- Top Banner Section with action buttons -->
 <div class="navbar">
-  <button onclick="clearPuzzle()">CLEAR</button>
-  <button onclick="solvePuzzle()">SOLVE</button>
-  <button onclick="printScrn()">PRINT</button>
+  <button onclick="document.getElementById('puzzleTable').find('input').val(''))">CLEAR</button>
+  <button onclick="solvePuzzle">SOLVE</button>
+  <button onclick="printScrn()">PRINT</button> <!-- Ideally this would be updated to only print the puzzle, not the screen -->
 </div>
 
 <section>
@@ -158,9 +159,9 @@ footer {
     <!-- Probably put some kind of JS here to update the puzzle -->
     <!-- Maybe use a table to put in each letter? We could then color in squares that have "!" black -->
     <!-- <embed src="large_test_puzzle.txt"><br> -->
-    <table>
+    <table id="puzzleTable">
       <tr height = "30%" width= "30%">
-        <td><input type="text" maxlength = "1"></td>
+        <td><input type="text" maxlength = "1" id="myInput"></td>
         <td><input type="text" maxlength = "1"></td>
         <td><input type="text" maxlength = "1"></td>
         <td><input type="text" maxlength = "1"></td>
@@ -212,7 +213,8 @@ footer {
       4. Word</p>
       <h3>Tools</h3>
       <div class="buttons">
-         <button>Block</button>
+         <button onclick="increaseGrid()">INCREASE GRID</button>
+         <button onclick="decreaseGrid()">REDUCE GRID</button>
          <button>Erase</button>
       </div>
   </sidebar>
@@ -261,7 +263,49 @@ footer {
     }
 
     function clearPuzzle(){
-
+        document.getElementById("PuzzleTable").value = '';
     }
+
+    function addRow() {
+      var table = document.getElementById("puzzleTable");
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = "NEW CELL1";
+      cell2.innerHTML = "NEW CELL2";
+    }
+
+    // Still needs a lot of work!
+    function increaseGrid() {
+        var table = document.getElementById("puzzleTable"),
+        i;
+        table.insertRow(0);
+
+        // Getting the rows in the table
+        var row = table.rows;
+
+        // open loop for each row and append cell
+        for (i = 0; i < table.rows.length; i++) {
+            createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), i, 'col');
+        }
+    }
+
+    function decreaseGrid() {
+        var table = document.getElementById("puzzleTable");
+
+        table.deleteRow(0);
+
+        // Getting the rows in the table
+        var row = table.rows;
+
+            // Removing the column at index(1).
+            var i = 1;
+            for (var j = 0; j < row.length; j++) {
+
+                // Deleting the ith cell of each row.
+                row[j].deleteCell(i);
+            }
+    }
+
 </script>
 </html>
