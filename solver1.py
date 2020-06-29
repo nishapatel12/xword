@@ -38,7 +38,8 @@ def createGrid(grid_size):
 def showGrid(grid):
   for row in range(len(grid)):
     for column in range(len(grid[row])):
-      print(grid[row][column], end = "")
+      print(grid[row][column]),
+      #print(grid[row][column], end="")
     print()
 
 
@@ -123,30 +124,41 @@ dict_file = 'eng_words.txt'
 master_dict = {} # Dictionary to contain answers and their clues !!Could there be multiple clues
 
 # Imports the puzzle text file
-puzzle_file = 'large_test_puzzle.txt'
+#puzzle_file = 'large_test_puzzle.txt'
+puzzle_file = 'test_puzzle.txt'
 puzzle = open(puzzle_file, "r")
 with open(puzzle_file, 'r') as p_file:
   puzzle_grid = [line.strip() for line in p_file]  # Takes each line from text file
 
 
+showGrid(puzzle_grid)
+
 grid_size = len(puzzle_grid[0])  # Finds the length of the grid
 with open(dict_file, "r") as a_file: # Opens file with answers/clues
   for line in a_file:
     stripped_line = line.strip()
-    (answer, clue) = stripped_line.split(maxsplit=1)
+    #(answer, clue) = stripped_line.split(maxsplit=1)
+    (answer, clue) = stripped_line.split(' ',1)
     #FIX: Something needs to be changed so that there can be 2+ clues for the same answer
-    master_dict[answer] = clue  # Files the string into the master dictionary
+    master_dict[answer] = clue[4:]  # Files the string into the master dictionary
 
 ## Fill in the rest of the missing spaces
-fillGrid(puzzle_grid, grid_size)
+# fillGrid(puzzle_grid, grid_size)
 
-## Find the clues for the corresponding answers
+# showGrid(puzzle_grid)
 
-## Clear unused clues
+# ## Find the clues for the corresponding answers
 
-# Save/Export puzzle
-with open(puzzle_file, 'w') as puzzle_final:
-  for row in puzzle_grid:
-    puzzle_final.write("%s\n" % row)
+# ## Clear unused clues
 
-wordFinder("a???t")
+# # Save/Export puzzle
+# with open(puzzle_file, 'w') as puzzle_final:
+#   for row in puzzle_grid:
+#     puzzle_final.write("%s\n" % row)
+
+# wordFinder("a???t")
+
+
+
+
+
